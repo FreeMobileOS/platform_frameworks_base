@@ -1088,6 +1088,8 @@ public class Build {
             return false;
         }
 
+	/* We don't get to build our own vendor.img yet... And Android's
+	 * will obviously mismatch ours
         if (!TextUtils.isEmpty(vendor)) {
             if (!Objects.equals(system, vendor)) {
                 Slog.e(TAG, "Mismatched fingerprints; system reported " + system
@@ -1095,6 +1097,7 @@ public class Build {
                 return false;
             }
         }
+	*/
 
         /* TODO: Figure out issue with checks failing
         if (!TextUtils.isEmpty(bootimage)) {
