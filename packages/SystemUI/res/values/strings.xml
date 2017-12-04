@@ -547,6 +547,10 @@
     <string name="accessibility_quick_settings_color_inversion_changed_off">Color inversion turned off.</string>
     <!-- Announcement made when the color inversion state changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
     <string name="accessibility_quick_settings_color_inversion_changed_on">Color inversion turned on.</string>
+    <!-- Announcement made when the grey color mode state changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_greymode_changed_off">Color inversion turned off.</string>
+    <!-- Announcement made when the grey color mode state changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_quick_settings_greymode_changed_on">Color inversion turned on.</string>
     <!-- Announcement made when the hotspot state changes to off (not shown on the screen). [CHAR LIMIT=NONE] -->
     <string name="accessibility_quick_settings_hotspot_changed_off">Mobile hotspot turned off.</string>
     <!-- Announcement made when the hotspot state changes to on (not shown on the screen). [CHAR LIMIT=NONE] -->
@@ -733,6 +737,8 @@
     <string name="quick_settings_brightness_dialog_auto_brightness_label">AUTO</string>
     <!-- QuickSettings: Label for the toggle that controls whether display inversion is enabled. [CHAR LIMIT=NONE] -->
     <string name="quick_settings_inversion_label">Invert colors</string>
+    <!-- QuickSettings: Label for the toggle that controls whether grey color mode is enabled. [CHAR LIMIT=NONE] -->
+    <string name="quick_settings_greymode_label">Grey color</string>
     <!-- QuickSettings: Label for the toggle that controls whether display color correction is enabled. [CHAR LIMIT=NONE] -->
     <string name="quick_settings_color_space_label">Color correction mode</string>
     <!-- QuickSettings: Control panel: Label for button that navigates to settings. [CHAR LIMIT=NONE] -->
