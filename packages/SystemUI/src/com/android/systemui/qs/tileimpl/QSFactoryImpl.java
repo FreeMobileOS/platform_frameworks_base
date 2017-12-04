@@ -26,6 +26,7 @@ import com.android.systemui.qs.tiles.BluetoothTile;
 import com.android.systemui.qs.tiles.CastTile;
 import com.android.systemui.qs.tiles.CellularTile;
 import com.android.systemui.qs.tiles.ColorInversionTile;
+import com.android.systemui.qs.tiles.GreyModeTile;
 import com.android.systemui.qs.tiles.DataSaverTile;
 import com.android.systemui.qs.tiles.DndTile;
 import com.android.systemui.qs.tiles.FlashlightTile;
@@ -55,6 +56,7 @@ public class QSFactoryImpl implements QSFactory {
         else if (tileSpec.equals("cell")) return new CellularTile(mHost);
         else if (tileSpec.equals("dnd")) return new DndTile(mHost);
         else if (tileSpec.equals("inversion")) return new ColorInversionTile(mHost);
+        else if (tileSpec.equals("greymode")) return new GreyModeTile(mHost);
         else if (tileSpec.equals("airplane")) return new AirplaneModeTile(mHost);
         else if (tileSpec.equals("work")) return new WorkModeTile(mHost);
         else if (tileSpec.equals("rotation")) return new RotationLockTile(mHost);
