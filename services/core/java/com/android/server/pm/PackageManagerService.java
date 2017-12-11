@@ -11929,10 +11929,6 @@ public class PackageManagerService extends IPackageManager.Stub
                                     + " but expected at " + known.codePathString
                                     + "; ignoring.");
                         }
-                    } else {
-                        throw new PackageManagerException(INSTALL_FAILED_INVALID_INSTALL_LOCATION,
-                                "Application package " + pkg.packageName
-                                + " not found; ignoring.");
                     }
                 }
             }
