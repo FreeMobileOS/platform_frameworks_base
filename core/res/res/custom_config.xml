@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-** Copyright 2018, The Android Open Source Project
+** Copyright 2016, CarbonROM
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -18,11 +18,7 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
-    <!-- Whether safe headphone volume warning dialog is disabled on Vol+ (operator specific). -->
-    <bool name="config_safe_media_disable_on_volume_up">false</bool>
-
   <!-- Whether the device supports Smart Pixels -->
-  <java-symbol type="bool" name="config_enableSmartPixels" />
+  <bool name="config_enableSmartPixels">false</bool>
 
 </resources>
