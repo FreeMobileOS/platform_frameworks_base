@@ -32,6 +32,7 @@ import com.android.systemui.qs.tiles.BluetoothTile;
 import com.android.systemui.qs.tiles.CastTile;
 import com.android.systemui.qs.tiles.CellularTile;
 import com.android.systemui.qs.tiles.ColorInversionTile;
+import com.android.systemui.qs.tiles.GreyModeTile;
 import com.android.systemui.qs.tiles.DataSaverTile;
 import com.android.systemui.qs.tiles.DndTile;
 import com.android.systemui.qs.tiles.FlashlightTile;
@@ -144,6 +145,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mDndTileProvider.get();
             case "inversion":
                 return mColorInversionTileProvider.get();
+            case "greymode":
+                return new GreyModeTile(mHost);
             case "airplane":
                 return mAirplaneModeTileProvider.get();
             case "work":
