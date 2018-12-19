@@ -410,6 +410,7 @@
     <protected-broadcast android:name="android.provider.action.SMS_MMS_DB_CREATED" />
     <protected-broadcast android:name="android.provider.action.SMS_MMS_DB_LOST" />
     <protected-broadcast android:name="android.intent.action.CONTENT_CHANGED" />
+    <protected-broadcast android:name="android.provider.action.SMS_MMS_DB_CREATED" />
     <protected-broadcast android:name="android.provider.Telephony.MMS_DOWNLOADED" />
 
     <protected-broadcast

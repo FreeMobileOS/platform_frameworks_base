@@ -1247,6 +1247,34 @@ public final class Telephony {
             public static final String ACTION_EXTERNAL_PROVIDER_CHANGE =
                           "android.provider.action.EXTERNAL_PROVIDER_CHANGE";
 
+			/**
+             * Broadcast action: When SMS-MMS db is being created. If file-based encryption is
+             * supported, this broadcast indicates creation of the db in credential-encrypted
+             * storage. A boolean is specified in {@link #EXTRA_IS_INITIAL_CREATE} to indicate if
+             * this is the initial create of the db. Requires
+             * {@link android.Manifest.permission#READ_SMS} to receive.
+             *
+             * @see #EXTRA_IS_INITIAL_CREATE
+             *
+             * @hide
+             */
+            @SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
+            public static final String ACTION_SMS_MMS_DB_CREATED =
+                    "android.provider.action.SMS_MMS_DB_CREATED";
+
+            /**
+             * Boolean flag passed as an extra with {@link #ACTION_SMS_MMS_DB_CREATED} to indicate
+             * whether the DB creation is the initial creation on the device, that is it is after a
+             * factory-data reset or a new device. Any subsequent creations of the DB (which
+             * happens only in error scenarios) will have this flag set to false.
+             *
+             * @see #ACTION_SMS_MMS_DB_CREATED
+             *
+             * @hide
+             */
+            public static final String EXTRA_IS_INITIAL_CREATE =
+                    "android.provider.extra.IS_INITIAL_CREATE";
+
             /**
              * Same as {@link #ACTION_DEFAULT_SMS_PACKAGE_CHANGED} but it's implicit (e.g. sent to
              * all apps) and requires
