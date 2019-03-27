@@ -2476,61 +2476,6 @@ public class NotificationManagerService extends SystemService {
         }
 
         @Override
-        public boolean areBubblesAllowed(String pkg) {
-            return areBubblesAllowedForPackage(pkg, Binder.getCallingUid());
-        }
-
-        @Override
-        public boolean areBubblesAllowedForPackage(String pkg, int uid) {
-            enforceSystemOrSystemUIOrSamePackage(pkg,
-                    "Caller not system or systemui or same package");
-
-            if (UserHandle.getCallingUserId() != UserHandle.getUserId(uid)) {
-                getContext().enforceCallingPermission(
-                        android.Manifest.permission.INTERACT_ACROSS_USERS,
-                        "canNotifyAsPackage for uid " + uid);
-            }
-
-            return mPreferencesHelper.areBubblesAllowed(pkg, uid);
-        }
-
-        @Override
-        public void setBubblesAllowed(String pkg, int uid, boolean allowed) {
-            enforceSystemOrSystemUI("Caller not system or systemui");
-            mPreferencesHelper.setBubblesAllowed(pkg, uid, allowed);
-            handleSavePolicyFile();
-        }
-
-        @Override
-        public boolean hasUserApprovedBubblesForPackage(String pkg, int uid) {
-            enforceSystemOrSystemUI("Caller not system or systemui");
-            int lockedFields = mPreferencesHelper.getAppLockedFields(pkg, uid);
-            return (lockedFields & PreferencesHelper.LockableAppFields.USER_LOCKED_BUBBLE) != 0;
-        }
-
-        @Override
-        public boolean shouldHideSilentStatusIcons(String callingPkg) {
-            checkCallerIsSameApp(callingPkg);
-
-            if (isCallerSystemOrPhone()
-                    || mListeners.isListenerPackage(callingPkg)) {
-                return mPreferencesHelper.shouldHideSilentStatusIcons();
-            } else {
-                throw new SecurityException("Only available for notification listeners");
-            }
-        }
-
-        @Override
-        public void setHideSilentStatusIcons(boolean hide) {
-            checkCallerIsSystem();
-
-            mPreferencesHelper.setHideSilentStatusIcons(hide);
-            handleSavePolicyFile();
-
-            mListeners.onStatusBarIconsBehaviorChanged(hide);
-        }
-
-        @Override
         public int getPackageImportance(String pkg) {
             checkCallerIsSystemOrSameApp(pkg);
             return mPreferencesHelper.getImportance(pkg, Binder.getCallingUid());
