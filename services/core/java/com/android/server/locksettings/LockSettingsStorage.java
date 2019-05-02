@@ -29,6 +29,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.os.storage.StorageManager;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.util.Slog;
@@ -49,7 +50,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -810,7 +810,7 @@ class LockSettingsStorage {
         }
 
         byte[] peekFile(String fileName) {
-            return copyOf((byte[]) peek(CacheKey.TYPE_FILE, fileName, -1 /* userId */));
+            return (byte[]) peek(CacheKey.TYPE_FILE, fileName, -1 /* userId */);
         }
 
         boolean hasFile(String fileName) {
@@ -818,11 +818,11 @@ class LockSettingsStorage {
         }
 
         void putFile(String key, byte[] value) {
-            put(CacheKey.TYPE_FILE, key, copyOf(value), -1 /* userId */);
+            put(CacheKey.TYPE_FILE, key, value, -1 /* userId */);
         }
 
         void putFileIfUnchanged(String key, byte[] value, int version) {
-            putIfUnchanged(CacheKey.TYPE_FILE, key, copyOf(value), -1 /* userId */, version);
+            putIfUnchanged(CacheKey.TYPE_FILE, key, value, -1 /* userId */, version);
         }
 
         void setFetched(int userId) {
@@ -868,10 +868,6 @@ class LockSettingsStorage {
 
             // Make sure in-flight loads can't write to cache.
             mVersion++;
-        }
-
-        private byte[] copyOf(byte[] data) {
-            return data != null ? Arrays.copyOf(data, data.length) : null;
         }
 
         synchronized void purgePath(String path) {
