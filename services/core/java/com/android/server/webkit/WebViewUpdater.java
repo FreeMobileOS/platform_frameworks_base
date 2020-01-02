@@ -268,9 +268,11 @@ class WebViewUpdater {
                 PackageInfo packageInfo =
                     mSystemInterface.getPackageInfoForProvider(allProviders[n]);
                 if (isValidProvider(allProviders[n], packageInfo)) {
+                    Slog.e(TAG, "HACK: valid package info for provider:" + packageInfo.packageName);
                     providers.add(new ProviderAndPackageInfo(allProviders[n], packageInfo));
                 }
             } catch (NameNotFoundException e) {
+                Slog.e(TAG, "HACK: Name Not found exceptione:" + e);
                 // Don't add non-existent packages
             }
         }
@@ -429,9 +431,10 @@ class WebViewUpdater {
 
     private int validityResult(WebViewProviderInfo configInfo, PackageInfo packageInfo) {
         // Ensure the provider targets this framework release (or a later one).
-        if (!UserPackage.hasCorrectTargetSdkVersion(packageInfo)) {
-            return VALIDITY_INCORRECT_SDK_VERSION;
-        }
+        // HACK: Do not check sdkversion code
+        //if (!UserPackage.hasCorrectTargetSdkVersion(packageInfo)) {
+        //    return VALIDITY_INCORRECT_SDK_VERSION;
+        // }
         if (!versionCodeGE(packageInfo.getLongVersionCode(), getMinimumVersionCode())
                 && !mSystemInterface.systemIsDebuggable()) {
             // Webview providers may be downgraded arbitrarily low, prevent that by enforcing
@@ -444,6 +447,7 @@ class WebViewUpdater {
         if (WebViewFactory.getWebViewLibrary(packageInfo.applicationInfo) == null) {
             return VALIDITY_NO_LIBRARY_FLAG;
         }
+        Slog.e(TAG, "HACK: provider package is valid:" + packageInfo.packageName);
         return VALIDITY_OK;
     }
 
